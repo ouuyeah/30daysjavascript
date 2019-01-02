@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Reference VS Copy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <script>
+
+    // start with strings, numbers and booleans
+/*     let age = 100;
+    let age2 = age;
+    console.log(age, age2);
+
+    age= 200;
+    console.log(age, age2);
+
+    let name = 'Julián';
+    let name2 = name;
+    console.log(name, name2); */
+
+    // Let's say we have an array
+    const players = ['Julián', 'Daniela', 'Valentin', 'Luis'];
+
+    // And we want to make a copy of it
+    const team = players;
+    console.log(players, team);
+
+    // And if we do this?
+    //team[3] = 'Bro';
+
+    // So, how we fix this? We ate a copy instead!
+    const team2 = players.slice();
+
+    //or create a new array and concat the old one in
+    const team3 = [].concat(players);
+
+    // or use the new ES6 Spread
+    const team4 = [...players];
+
+    // Another way
+    const team5 = Array.from[players];
+
+    // The same thins goes for objects, let's say we have a person object
+    // With Objects
+    const person = {
+      name: 'Julián Álvarez',
+      age: 80
+    };
+
+    // and think we make a copy (Does not work!)
+    const captain = person; 
+    captain.number = 99;
+
+    // how do we take a copy instead?
+    const cap2 = Object.assign({}, person, { number: 99 });
+    console.log(cap2);
+
+    // We will hopefully soon see the object ...spread
+    const cap3 = {...person};
+
+    // Things to note - this only 1 level deep - both for arrays and Objects. Lodash has a cloneDeep method, but you should think twice before using it.
+
+    const julio = {
+      name: 'Julián',
+      age: 26,
+      social: {
+        twitter: '@ouyeahbro',
+        facebook: 'julioyeah'
+      }
+    };
+
+    console.clear();
+    console.log(julio);
+
+    const dev = Object.assign({}, julio);
+
+    const dev2 = JSON.parse(JSON.stringify(julio))
+
+  </script>
+</body>
+</html>
